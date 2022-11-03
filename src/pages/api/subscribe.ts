@@ -29,12 +29,11 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
             )
         )
 
-        let customerId = user.data.stripe_customer_id
+        let customerId = user.data.stripe_customer_id;
 
         if(!customerId) {
                     const stripeCustomer = await stripe.customers.create({
             email: session.user.email,
-            //metadata
         })
 
             await fauna.query(
